@@ -25,7 +25,7 @@ public class ProductController {
 
     @GetMapping
     public List<Product> getProducts() {
-        return null;
+        return productService.getProducts();
     }
 
     @DeleteMapping("/{id}")
@@ -40,11 +40,11 @@ public class ProductController {
 
     @PutMapping("/{id}")
     public Product replaceProduct(@PathVariable("id") Long id, @RequestBody Product product) {
-        return null;
+        return productService.replaceProduct(id, product);
     }
 
     @PatchMapping("/{id}")
     public Product updateProduct(@PathVariable("id") Long id, @RequestBody Product product) {
-        return null;
+        return productService.updateProduct(id, product);
     }
 }
