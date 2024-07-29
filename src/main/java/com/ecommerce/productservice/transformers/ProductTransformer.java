@@ -23,4 +23,17 @@ public class ProductTransformer {
         product.setCategory(category);
         return product;
     }
+
+    public FakeProductStoreDto convertProductToFakeProductDto(Product product) {
+        if(product == null) {
+            return null;
+        }
+        FakeProductStoreDto dto = new FakeProductStoreDto();
+        dto.setId(product.getId());
+        dto.setTitle(product.getTitle());
+        dto.setPrice(product.getPrice());
+        dto.setDescription(product.getDescription());
+        dto.setCategory(product.getCategory().getTitle());
+        return dto;
+    }
 }

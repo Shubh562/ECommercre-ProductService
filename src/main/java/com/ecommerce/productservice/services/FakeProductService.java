@@ -4,7 +4,6 @@ import com.ecommerce.productservice.dtos.FakeProductStoreDto;
 import com.ecommerce.productservice.models.Product;
 import com.ecommerce.productservice.transformers.ProductTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -41,7 +40,9 @@ public class FakeProductService implements ProductService{
 
     @Override
     public Product createProduct(Product product) {
-        return null;
+        FakeProductStoreDto fakeProductStoreDto = productTransformer.convertProductToFakeProductDto(product);
+        FakeProductStoreDto response = restTemplate.postForObject("https://fakestoreapi.com/products", fakeProductStoreDto, FakeProductStoreDto.class);
+        return productTransformer.convertFakeProductDtoToProduct(response);
     }
 
     @Override
