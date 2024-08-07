@@ -42,7 +42,7 @@ public class FakeProductService implements ProductService{
 
     @Override
     public void deleteProduct(Long id) {
-
+        restTemplate.delete("https://fakestoreapi.com/products/" + id);
     }
 
     @Override
